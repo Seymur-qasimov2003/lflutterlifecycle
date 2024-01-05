@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutterlifecycleexample/views/pageb.dart';
 
 class PageA extends StatefulWidget {
   const PageA({Key? key}) : super(key: key);
@@ -50,19 +51,25 @@ class _PageAState extends State<PageA> with WidgetsBindingObserver {
   @override
   Widget build(BuildContext context) {
     print('build PageA');
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Page A'),
-        centerTitle: true,
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'Page A',
-            ),
-          ],
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text('Page A'),
+          centerTitle: true,
+        ),
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => const PageB()));
+                },
+                child: const Text('Page B'),
+              ),
+            ],
+          ),
         ),
       ),
     );
